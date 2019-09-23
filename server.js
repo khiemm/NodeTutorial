@@ -1,18 +1,12 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
-const path = require('path')
-const Joi = require('joi');
 const db = require('./db/db')
-
-// schema used for data validation for our todo document
-const schema = Joi.object().keys({
-    todo: Joi.string().required()
-});
-
-const routes = require('./routes');
+const routes = require('./routes')
 
 app.use(bodyParser.json());
+
+app.use(routes)
 
 // Middleware for handling Error
 // Sends Error Response Back to User
@@ -23,8 +17,6 @@ app.use((err, req, res, next) => {
         }
     });
 })
-
-app.use(routes)
 
 db.connect((err) => {
     if (err) {

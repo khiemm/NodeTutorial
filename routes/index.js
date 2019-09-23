@@ -3,7 +3,7 @@ const path = require('path')
 
 app.get('/', (req, res) => {
     console.log(__dirname)
-    res.sendFile(path.join(__dirname, 'index.html'))
+    res.sendFile(path.join(__dirname, 'users.html'))
 })
 
 // app.get('/', (req, res) => {

@@ -11,7 +11,9 @@ const path = require('path')
 //         })
 //         ;
 // });
+
 const Joi = require('joi');
+
 // schema used for data validation for our todo document
 const schema = Joi.object().keys({
     todo: Joi.string().required()
@@ -49,7 +51,7 @@ app.post('/', (req, res, next) => {
             const error = new Error("Invalid Input");
             // console.log(error)
             error.status = 400;
-            next(err);
+            next(error);
         }
         else {
             db.getDB().collection(collection).insertOne(userInput, (err, result) => {
