@@ -8,7 +8,8 @@ var multer = require('multer');
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
-// phải là sting để đọc đc file, tên gì cũng đc
+
+// phải là string để đọc đc file, tên gì cũng đc
 app.use(multer({ dest: 'lol' }).any());
 app.use(cookieParser())
 
