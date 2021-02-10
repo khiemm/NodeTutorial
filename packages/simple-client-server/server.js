@@ -4,7 +4,8 @@ var url = require('url');
 
 // Create a server
 http.createServer(function (request, response) {
-   console.log(request.url)
+   console.log(request)
+
    // Parse the request containing file name
    var pathname = url.parse(request.url).pathname;
 
@@ -20,7 +21,7 @@ http.createServer(function (request, response) {
          // Content Type: text/plain
          response.writeHead(404, { 'Content-Type': 'text/html' });
       } else {
-         //Page found	  
+         // Page found
          // HTTP Status: 200 : OK
          // Content Type: text/plain
          response.writeHead(200, { 'Content-Type': 'text/html' });
@@ -29,7 +30,7 @@ http.createServer(function (request, response) {
          response.write(data.toString());
       }
 
-      // Send the response body 
+      // Send the response body
       response.end();
    });
 }).listen(8081);

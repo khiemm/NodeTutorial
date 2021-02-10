@@ -18,4 +18,6 @@ function forEachLoop() {
 }
 
 forLoop()
-// forEachLoop()
+forEachLoop()
+
+// NOTE: study again when very free

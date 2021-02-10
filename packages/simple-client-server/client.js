@@ -7,7 +7,6 @@ var options = {
    path: '/index.htm'  
 };
 
-// chưa hiểu
 // Callback function is used to deal with response
 var callback = function(response) {
    // Continuously update stream with data
@@ -21,6 +20,7 @@ var callback = function(response) {
       console.log(body);
    });
 }
+
 // Make a request to the server
 var req = http.request(options, callback);
 req.end();
