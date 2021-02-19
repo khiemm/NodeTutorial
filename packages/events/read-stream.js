@@ -10,10 +10,11 @@ readerStream.setEncoding("UTF8");
 // Handle stream events --> data, end, and error
 readerStream.on("data", function (chunk) {
   data += chunk;
+  console.log("listen data", data, chunk);
 });
 
 readerStream.on("end", function () {
-  console.log(data);
+  console.log("listen end", data);
 });
 
 readerStream.on("error", function (err) {
@@ -21,3 +22,6 @@ readerStream.on("error", function (err) {
 });
 
 console.log("Program Ended");
+
+// https://nodejs.org/api/fs.html#fs_fs_createreadstream_path_options
+// https://nodejs.org/api/stream.html#stream_class_stream_readable
