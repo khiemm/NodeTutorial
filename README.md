@@ -13,3 +13,6 @@ packages
     - child_process
     - stream
     - event emitter
+    - async
+
+packages are still confusing and overlapping (event-loop, learn-async, serial-parallel), will update later
