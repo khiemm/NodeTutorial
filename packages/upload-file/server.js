@@ -9,12 +9,10 @@ var multer = require('multer');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// phải là string để đọc đc file, tên gì cũng đc
-app.use(multer({ dest: 'lol' }).any());
+app.use(multer({ dest: 'public/images' }).any());
 app.use(cookieParser())
 
 app.get('/', function (req, res) {
-   console.log("Cookies: ", req.cookies)
    res.send('Hello World');
 })
 
@@ -23,12 +21,11 @@ app.get('/index.htm', function (req, res) {
 })
 
 app.post('/file_upload', function (req, res) {
+   // read binary file data
    var fileReiceved = req.files[0]
    console.log(fileReiceved)
-   console.log(fileReiceved.originalname);
-   console.log(fileReiceved.path);
-   console.log(fileReiceved.mimetype);
-   // đường dẫn thư mục chứa file
+
+   // create new file path and save binary data
    var file = __dirname + "/public/images/" + fileReiceved.originalname;
 
    fs.readFile(fileReiceved.path + '', function (err, data) {
@@ -40,9 +37,11 @@ app.post('/file_upload', function (req, res) {
                message: 'File uploaded successfully',
                filename: fileReiceved.originalname
             };
+            // delete binary file data
+            fs.unlink(fileReiceved.path + '', (err) => {
+            })
          }
 
-         console.log(response);
          res.end(JSON.stringify(response));
       });
    });
