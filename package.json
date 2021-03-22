@@ -12,6 +12,7 @@
   "dependencies": {
     "body-parse": "^0.1.0",
     "body-parser": "^1.19.0",
+    "bson": "^4.2.3",
     "cookie-parser": "^1.4.4",
     "csv": "^5.4.0",
     "db": "^1.1.1",
