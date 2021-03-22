@@ -1,3 +1,5 @@
+const csv = require("csv/lib/sync");
+
 /**
  *
  * @param {string} filePath file or folder path
@@ -24,4 +26,21 @@ const addHeaderToCsv = (filePath, header) => {
   });
 };
 
-addHeaderToCsv();
+const transformCsvToJson = (filePath) => {
+  const fs = require("fs");
+  const data = fs.readFileSync(filePath);
+  // const stringData = data.toString().replace(/\|/g, ",");
+  const jsonData = csv.parse(data, {
+    columns: true,
+    skip_empty_lines: true,
+  });
+  fs.writeFileSync(
+    "C:/Users/khiem/Downloads/GMS_format_292_open_batches_2.csv",
+    JSON.stringify(jsonData)
+  );
+};
+
+const writeJsonToCsv = (data) => {};
+
+// addHeaderToCsv();
+transformCsvToJson("C:/Users/khiem/Downloads/GMS_format_292_open_batches.csv");
